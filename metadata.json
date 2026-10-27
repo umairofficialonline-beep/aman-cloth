@@ -1,0 +1,6 @@
+{
+  "name": "Aman Cloth House — Luxury Pakistani Fashion",
+  "description": "Premium Pakistani clothing brand offering designer Shalwar Kameez, luxury Kurtas, unstitched & pret collections, and festive couture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
