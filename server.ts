@@ -30,8 +30,12 @@ if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 }
 
-// Serve uploaded files statically
+// Serve assets and uploaded files statically across all environments
+app.use('/src/assets/images', express.static(path.join(__dirname, 'src', 'assets', 'images')));
+app.use('/src/assets', express.static(path.join(__dirname, 'src', 'assets')));
+app.use('/images', express.static(path.join(__dirname, 'src', 'assets', 'images')));
 app.use('/uploads', express.static(UPLOADS_DIR));
+app.use('/data/uploads', express.static(UPLOADS_DIR));
 
 interface DBStructure {
   products: Product[];
@@ -1627,6 +1631,11 @@ app.get('/api/admin/export/orders.csv', requireAdminAuth, (req, res) => {
 
 // Vite middleware in dev or static serve in prod
 async function startServer() {
+  app.use('/src/assets', express.static(path.join(__dirname, 'src', 'assets')));
+  app.use('/images', express.static(path.join(__dirname, 'src', 'assets', 'images')));
+  app.use('/uploads', express.static(UPLOADS_DIR));
+  app.use('/data/uploads', express.static(UPLOADS_DIR));
+
   if (process.env.NODE_ENV === 'production' && fs.existsSync(path.join(__dirname, 'dist'))) {
     app.use(express.static(path.join(__dirname, 'dist')));
     app.get('*', (req, res) => {

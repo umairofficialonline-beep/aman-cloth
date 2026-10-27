@@ -192,6 +192,11 @@ export const ProductDetailPage: React.FC = () => {
               src={activeImage || product.images[0]}
               alt={product.name}
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                if (!e.currentTarget.src.includes('category_men_collection')) {
+                  e.currentTarget.src = '/src/assets/images/category_men_collection_1793091301301.jpg';
+                }
+              }}
               className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
 

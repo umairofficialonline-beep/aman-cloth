@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Product, Category, CartItem, Order, StoreSettings } from '../types';
 import * as api from '../api';
+import { INITIAL_PRODUCTS, INITIAL_CATEGORIES, INITIAL_SETTINGS } from '../initialData';
 
 export type PageView = 
   | 'home'
@@ -102,10 +103,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [settings, setSettings] = useState<StoreSettings | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
+  const [categories, setCategories] = useState<Category[]>(INITIAL_CATEGORIES);
+  const [settings, setSettings] = useState<StoreSettings | null>(INITIAL_SETTINGS);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // Cart State (cached locally for instant UX)
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -164,16 +165,23 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const refreshData = async () => {
     try {
       setLoading(true);
-      const [prods, cats, stngs] = await Promise.all([
+      const [prodsRes, catsRes, stngsRes] = await Promise.allSettled([
         api.fetchProducts(),
         api.fetchCategories(),
         api.fetchStoreSettings()
       ]);
-      setProducts(prods);
-      setCategories(cats);
-      setSettings(stngs);
+
+      if (prodsRes.status === 'fulfilled' && Array.isArray(prodsRes.value) && prodsRes.value.length > 0) {
+        setProducts(prodsRes.value);
+      }
+      if (catsRes.status === 'fulfilled' && Array.isArray(catsRes.value) && catsRes.value.length > 0) {
+        setCategories(catsRes.value);
+      }
+      if (stngsRes.status === 'fulfilled' && stngsRes.value) {
+        setSettings(stngsRes.value);
+      }
     } catch (err) {
-      console.error('Failed to load initial data:', err);
+      console.warn('Live database sync notice (using cached catalog):', err);
     } finally {
       setLoading(false);
     }

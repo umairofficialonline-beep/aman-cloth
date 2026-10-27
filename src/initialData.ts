@@ -1,0 +1,400 @@
+import type { Product, Category, StoreSettings } from './types';
+
+export const INITIAL_PRODUCTS: Product[] = [
+  {
+    id: 'prod-001',
+    name: 'Royal Navy Embroidered Kurta Shalwar',
+    slug: 'royal-navy-embroidered-kurta-shalwar',
+    sku: 'ACH-MEN-001',
+    category: "Men's Clothing",
+    brand: 'Aman Couture',
+    price: 8950,
+    salePrice: 7499,
+    stock: 24,
+    description: 'Masterfully crafted from premium staple blended cotton-silk with intricate tilla and resham threadwork along the band collar and cuffs. Tailored to perfection for festive occasions and formal celebrations.',
+    fabricDetails: '80% Premium Egyptian Cotton, 20% Mulberry Silk Blend. Breathable & crease-resistant.',
+    careInstructions: 'Dry clean recommended. Gentle hand wash inside out with cold water. Iron on medium heat.',
+    packageContains: '1 Embroidered Kurta, 1 Matching Tailored Shalwar, Extra Replacement Buttons.',
+    images: [
+      '/src/assets/images/category_men_collection_1793091301301.jpg',
+      '/src/assets/images/hero_fashion_luxury_1793091301490.jpg'
+    ],
+    colors: ['Royal Navy', 'Charcoal Grey', 'Deep Emerald'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    featured: true,
+    bestSeller: true,
+    newArrival: true,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Kurta Shalwar', 'Festive', 'Men Fashion', 'Embroidery'],
+    rating: 4.9,
+    reviewsCount: 18,
+    reviews: [
+      {
+        id: 'rev-01',
+        userName: 'Hamza Tariq',
+        userCity: 'Lahore',
+        rating: 5,
+        comment: 'Outstanding quality and stitching! The collar embroidery is subtle yet luxurious. Delivered in 2 days to Gulberg.',
+        date: '2026-10-15',
+        verifiedPurchase: true
+      },
+      {
+        id: 'rev-02',
+        userName: 'Bilal Qureshi',
+        userCity: 'Islamabad',
+        rating: 5,
+        comment: 'Fabric feels ultra soft and breathable. The navy tone has a regal sheen.',
+        date: '2026-10-18',
+        verifiedPurchase: true
+      }
+    ],
+    createdAt: new Date(Date.now() - 3600000 * 24 * 7).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-002',
+    name: 'Zardozi Rose Organza Formal 3-Piece Suit',
+    slug: 'zardozi-rose-organza-formal-suit',
+    sku: 'ACH-WMN-002',
+    category: "Women's Clothing",
+    brand: 'Aman Couture',
+    price: 19500,
+    salePrice: 16999,
+    stock: 15,
+    description: 'An ethereal blush pink pure organza kali-dar angrakha tunic adorned with hand-embellished dabka, sequins, cutdana, and zardozi work. Paired with a tailored silk trouser and scalloped zari-embroidered dupatta.',
+    fabricDetails: 'Shirt: Pure Organza with Silk Lining. Trouser: Pure Raw Silk. Dupatta: Soft Organza with 4-side border.',
+    careInstructions: 'Strictly dry clean only. Store wrapped in muslin cloth.',
+    packageContains: 'Stitched Shirt, Stitched Trousers, Embellished Dupatta, Slip Lining.',
+    images: [
+      '/src/assets/images/category_women_collection_1793091302648.jpg',
+      '/src/assets/images/promo_festive_banner_1793091303468.jpg'
+    ],
+    colors: ['Blush Rose', 'Champagne Gold', 'Ice Blue'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    featured: true,
+    bestSeller: true,
+    newArrival: true,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Women Formal', 'Zardozi', 'Organza', 'Wedding Collection'],
+    rating: 5.0,
+    reviewsCount: 22,
+    reviews: [
+      {
+        id: 'rev-03',
+        userName: 'Ayesha Mehmood',
+        userCity: 'Karachi',
+        rating: 5,
+        comment: 'Even more stunning in reality than pictures. The handwork is meticulous and fitting is true to size chart.',
+        date: '2026-10-12',
+        verifiedPurchase: true
+      }
+    ],
+    createdAt: new Date(Date.now() - 3600000 * 24 * 6).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-003',
+    name: 'Imperial Emerald Velvet Sherwani Kurta Ensemble',
+    slug: 'imperial-emerald-velvet-sherwani-kurta',
+    sku: 'ACH-MEN-003',
+    category: "Men's Clothing",
+    brand: 'Aman Heritage',
+    price: 24500,
+    salePrice: null,
+    stock: 8,
+    description: 'Regal micro-velvet sherwani kurta in deep jewel-toned emerald. Accented with handcrafted gold marori work on the neckline and sleeves, complemented by an ivory chudidar pajama and velvet shawl.',
+    fabricDetails: 'Pure Micro Velvet 9000 with satin lining. Breathable inner finish.',
+    careInstructions: 'Professional dry clean only. Steam iron only.',
+    packageContains: '1 Velvet Sherwani, 1 Inner Silk Kurta, 1 Raw Silk Pajama, Matching Shawl.',
+    images: [
+      '/src/assets/images/hero_fashion_luxury_1793091301490.jpg',
+      '/src/assets/images/promo_festive_banner_1793091303468.jpg'
+    ],
+    colors: ['Jewel Emerald', 'Midnight Black', 'Ruby Maroon'],
+    sizes: ['S', 'M', 'L', 'XL'],
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Sherwani', 'Groom Wear', 'Velvet', 'Luxury Menswear'],
+    rating: 4.8,
+    reviewsCount: 9,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-004',
+    name: 'Bespoke Unstitched Jacquard & Raw Silk 3-Piece',
+    slug: 'bespoke-unstitched-jacquard-raw-silk-3-piece',
+    sku: 'ACH-UNS-004',
+    category: 'Unstitched Fabrics',
+    brand: 'Aman Fabrics',
+    price: 7800,
+    salePrice: 6499,
+    stock: 35,
+    description: 'Premium unstitched 3-piece suit featuring woven metallic jacquard front and back, heavy organza embroidered neckline patch, embroidered daman border, and pure slub-silk trouser with printed chiffon dupatta.',
+    fabricDetails: 'Jacquard Fabric: 3.25 meters. Raw Silk Trouser: 2.5 meters. Pure Chiffon Dupatta: 2.5 meters. Embroidered Patches: 3 pieces.',
+    careInstructions: 'Shrink fabric before stitching. Hand wash separate in mild detergent.',
+    packageContains: 'Unstitched Shirt Fabric, Trouser Fabric, Dupatta, 3x Embroidered Border Patches.',
+    images: [
+      '/src/assets/images/category_unstitched_luxury_1793091303504.jpg',
+      '/src/assets/images/category_women_collection_1793091302648.jpg'
+    ],
+    colors: ['Teal & Gold', 'Crimson & Rust', 'Ivory & Ochre'],
+    sizes: ['Unstitched'],
+    featured: true,
+    bestSeller: true,
+    newArrival: false,
+    isUnstitched: true,
+    isPublished: true,
+    tags: ['Unstitched', 'Jacquard', 'Pakistani Lawn', 'Festive Lawn'],
+    rating: 4.9,
+    reviewsCount: 31,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 4).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-005',
+    name: 'Classic Egyptian Cotton Kurta — Pure Ivory',
+    slug: 'classic-egyptian-cotton-kurta-ivory',
+    sku: 'ACH-MEN-005',
+    category: 'Kurtas',
+    brand: 'Aman Daily',
+    price: 4950,
+    salePrice: 3999,
+    stock: 45,
+    description: 'Refined minimalism for everyday elegance and Jummah prayers. Tailored from 120/2 double-ply long-staple Egyptian cotton with mother-of-pearl buttons and crisp banded collar.',
+    fabricDetails: '100% Giza Egyptian Long Staple Cotton. Silky smooth finish.',
+    careInstructions: 'Machine wash gentle. Warm iron with light starch.',
+    packageContains: '1 Kurta.',
+    images: [
+      '/src/assets/images/category_men_collection_1793091301301.jpg'
+    ],
+    colors: ['Pure Ivory', 'Soft Slate', 'Biscuit Cream'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    featured: false,
+    bestSeller: true,
+    newArrival: false,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Kurta', 'Cotton', 'Summer Collection', 'Men Casual'],
+    rating: 4.7,
+    reviewsCount: 14,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 3).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-006',
+    name: 'The Opulent Velvet Wedding Kalidar Suit',
+    slug: 'opulent-velvet-wedding-kalidar-suit',
+    sku: 'ACH-WMN-006',
+    category: "Women's Clothing",
+    brand: 'Aman Couture',
+    price: 28000,
+    salePrice: 24500,
+    stock: 6,
+    description: 'Royal midnight blue and plum hand-worked velvet kalidar gown. Embellished with resham, tilla, mukesh work, and paired with a heavy organza dupatta finished with gold kiran edging.',
+    fabricDetails: 'Pure Korean Velvet 9000 with rich zari hand-embroidery.',
+    careInstructions: 'Dry clean only. Do not wash or steam at home.',
+    packageContains: '1 Stitched Kalidar Anarkali, 1 Silk Trouser, 1 Heavy Embroidered Dupatta.',
+    images: [
+      '/src/assets/images/promo_festive_banner_1793091303468.jpg',
+      '/src/assets/images/category_women_collection_1793091302648.jpg'
+    ],
+    colors: ['Midnight Blue', 'Royal Plum', 'Deep Crimson'],
+    sizes: ['S', 'M', 'L', 'XL'],
+    featured: true,
+    bestSeller: false,
+    newArrival: true,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Velvet', 'Kalidar', 'Bridal Festive', 'Formal'],
+    rating: 5.0,
+    reviewsCount: 11,
+    createdAt: new Date(Date.now() - 3600000 * 24 * 2).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-007',
+    name: 'Boys Traditional Embroidered Kurta Pajama',
+    slug: 'boys-traditional-embroidered-kurta-pajama',
+    sku: 'ACH-KID-007',
+    category: "Kids' Clothing",
+    brand: 'Aman Junior',
+    price: 3600,
+    salePrice: 2999,
+    stock: 20,
+    description: 'Charming festive kurta pajama set for boys. Breathable soft cotton blend with subtle collar threadwork and elastic waistband trousers for full comfort throughout celebrations.',
+    fabricDetails: '100% Cotton Linen blend. Skin friendly.',
+    careInstructions: 'Machine wash cold. Gentle tumble dry.',
+    packageContains: '1 Kurta, 1 Cotton Pajama.',
+    images: [
+      '/src/assets/images/category_men_collection_1793091301301.jpg'
+    ],
+    colors: ['Sky Blue', 'Ivory Cream', 'Sage Green'],
+    sizes: ['4-5 Y', '6-7 Y', '8-9 Y', '10-11 Y', '12-13 Y'],
+    featured: false,
+    bestSeller: true,
+    newArrival: true,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Kids', 'Boys Kurta', 'Festive Kids', 'Junior'],
+    rating: 4.9,
+    reviewsCount: 8,
+    createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: 'prod-008',
+    name: 'Executive Cutaway Collar Crisp Cotton Shirt',
+    slug: 'executive-cutaway-collar-crisp-cotton-shirt',
+    sku: 'ACH-SHR-008',
+    category: 'Shirts',
+    brand: 'Aman Man',
+    price: 4200,
+    salePrice: 3499,
+    stock: 25,
+    description: 'Crisp semi-formal tailored button-down shirt designed with cutaway collar, French placket, and adjustable double barrel cuffs. Ideal for boardroom meetings and formal dinners.',
+    fabricDetails: '100% Compact Twill Cotton. Easy-care wrinkle-free finish.',
+    careInstructions: 'Machine wash warm. Medium iron.',
+    packageContains: '1 Tailored Formal Shirt.',
+    images: [
+      '/src/assets/images/category_men_collection_1793091301301.jpg'
+    ],
+    colors: ['Crisp White', 'Sky Blue', 'Charcoal Stripe'],
+    sizes: ['S', 'M', 'L', 'XL'],
+    featured: false,
+    bestSeller: false,
+    newArrival: false,
+    isUnstitched: false,
+    isPublished: true,
+    tags: ['Shirts', 'Menswear', 'Formal', 'Western'],
+    rating: 4.6,
+    reviewsCount: 16,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+];
+
+export const INITIAL_CATEGORIES: Category[] = [
+  {
+    id: 'cat-1',
+    name: "Men's Clothing",
+    slug: 'mens-clothing',
+    description: 'Designer Kurtas, Shalwar Kameez, Waistcoats & Formalwear',
+    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    itemCount: 12,
+    displayOrder: 1,
+    isVisible: true
+  },
+  {
+    id: 'cat-2',
+    name: "Women's Clothing",
+    slug: 'womens-clothing',
+    description: 'Luxury Pret, Festive 3-Piece, Chiffon & Organza Ensembles',
+    image: '/src/assets/images/category_women_collection_1793091302648.jpg',
+    itemCount: 18,
+    displayOrder: 2,
+    isVisible: true
+  },
+  {
+    id: 'cat-3',
+    name: 'Unstitched Fabrics',
+    slug: 'unstitched-fabrics',
+    description: 'Pure Jacquard, Embroidered Lawn & Raw Silk Cut Pieces',
+    image: '/src/assets/images/category_unstitched_luxury_1793091303504.jpg',
+    itemCount: 24,
+    displayOrder: 3,
+    isVisible: true
+  },
+  {
+    id: 'cat-4',
+    name: 'Kurtas',
+    slug: 'kurtas',
+    description: 'Casual & Semi-Formal Pure Cotton Band Collar Kurtas',
+    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    itemCount: 15,
+    displayOrder: 4,
+    isVisible: true
+  },
+  {
+    id: 'cat-5',
+    name: 'Shirts',
+    slug: 'shirts',
+    description: 'Formal Executive & Smart Casual Button-down Shirts',
+    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    itemCount: 9,
+    displayOrder: 5,
+    isVisible: true
+  },
+  {
+    id: 'cat-6',
+    name: "Kids' Clothing",
+    slug: 'kids-clothing',
+    description: 'Festive Kurta Pajamas & Waistcoats for Young Gentlemen',
+    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    itemCount: 8,
+    displayOrder: 6,
+    isVisible: true
+  }
+];
+
+export const INITIAL_SETTINGS: StoreSettings = {
+  storeName: 'Aman Cloth House',
+  tagline: 'Crafting Generational Pakistani Elegance & Luxury Couture',
+  logoUrl: '',
+  phone: '+92 300 8472910',
+  whatsappNumber: '+92 300 8472910',
+  email: 'info@amancloth.pk',
+  address: 'Shop # 14-16, Liberty Market, Gulberg III',
+  city: 'Lahore, Pakistan',
+  currency: 'PKR',
+  currencySymbol: 'Rs.',
+  announcementBarText: '✨ FREE DELIVERY ACROSS PAKISTAN ON ORDERS ABOVE RS. 4,999 | CASH ON DELIVERY AVAILABLE ✨',
+  announcementActive: true,
+  standardShippingFee: 250,
+  freeShippingThreshold: 4999,
+  enableCod: true,
+  enableBankTransfer: true,
+  bankDetails: {
+    bankName: 'Meezan Bank Limited',
+    accountTitle: 'Aman Cloth House (Pvt) Ltd',
+    accountNumber: '02010103489201',
+    iban: 'PK42MEZN0002010103489201'
+  },
+  socialLinks: {
+    instagram: 'https://instagram.com/amanclothhouse',
+    facebook: 'https://facebook.com/amanclothhouse',
+    whatsapp: 'https://wa.me/923008472910',
+    youtube: 'https://youtube.com/@amanclothhouse'
+  },
+  heroBanner: {
+    title: 'Masterpieces of Pakistani Elegance',
+    subtitle: 'Winter & Wedding Couture 2026. Bespoke hand-embroidery, pure organza, raw silk & fine Egyptian cotton.',
+    image: '/src/assets/images/hero_fashion_luxury_1793091301490.jpg',
+    ctaText: 'Explore Collection',
+    ctaLink: '/shop'
+  },
+  promotionalBanners: [
+    {
+      id: 'promo-01',
+      title: 'Royal Wedding Festive Edit 2026',
+      subtitle: 'Handcrafted Zardozi Kalidars, Velvet Sherwanis & Pure Jacquard Ensembles',
+      tagline: 'LIMITED EDITION HERITAGE COLLECTION',
+      buttonText: 'Shop Festive Edit',
+      link: '/shop',
+      image: '/src/assets/images/promo_festive_banner_1793091303468.jpg',
+      isActive: true
+    }
+  ],
+  policies: {
+    shipping: 'We deliver nationwide across Pakistan via TCS and Call Courier in 2-4 business days. Standard shipping is Rs. 250 and FREE for orders exceeding Rs. 4,999. Cash on Delivery is supported in 250+ cities.',
+    returns: 'Aman Cloth House provides an easy 7-day exchange guarantee. If sizing is not perfect or you require a color swap, contact our WhatsApp helpline at +92 300 8472910 with your order number.',
+    privacy: 'Your personal information, phone numbers, and delivery addresses are kept strictly confidential and only used for processing your orders.',
+    terms: 'All garments are crafted with high quality fabric specifications. Unstitched items must be verified before tailoring. Hand-embroidered pieces are strictly dry clean only.',
+    about: 'Established in 1998 in Liberty Market Lahore, Aman Cloth House has grown into one of Pakistan’s premier destinations for bespoke menswear, opulent bridal pret, and luxury textiles.'
+  }
+};
