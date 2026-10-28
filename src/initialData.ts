@@ -1,4 +1,11 @@
 import type { Product, Category, StoreSettings } from './types';
+import { 
+  heroImage, 
+  menCollectionImage, 
+  womenCollectionImage, 
+  unstitchedImage, 
+  promoBannerImage 
+} from './assets/images';
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
@@ -16,8 +23,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     careInstructions: 'Dry clean recommended. Gentle hand wash inside out with cold water. Iron on medium heat.',
     packageContains: '1 Embroidered Kurta, 1 Matching Tailored Shalwar, Extra Replacement Buttons.',
     images: [
-      '/src/assets/images/category_men_collection_1793091301301.jpg',
-      '/src/assets/images/hero_fashion_luxury_1793091301490.jpg'
+      menCollectionImage,
+      heroImage
     ],
     colors: ['Royal Navy', 'Charcoal Grey', 'Deep Emerald'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -67,8 +74,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     careInstructions: 'Strictly dry clean only. Store wrapped in muslin cloth.',
     packageContains: 'Stitched Shirt, Stitched Trousers, Embellished Dupatta, Slip Lining.',
     images: [
-      '/src/assets/images/category_women_collection_1793091302648.jpg',
-      '/src/assets/images/promo_festive_banner_1793091303468.jpg'
+      womenCollectionImage,
+      promoBannerImage
     ],
     colors: ['Blush Rose', 'Champagne Gold', 'Ice Blue'],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -103,14 +110,14 @@ export const INITIAL_PRODUCTS: Product[] = [
     brand: 'Aman Heritage',
     price: 24500,
     salePrice: null,
-    stock: 8,
+    stock: 4,
     description: 'Regal micro-velvet sherwani kurta in deep jewel-toned emerald. Accented with handcrafted gold marori work on the neckline and sleeves, complemented by an ivory chudidar pajama and velvet shawl.',
     fabricDetails: 'Pure Micro Velvet 9000 with satin lining. Breathable inner finish.',
     careInstructions: 'Professional dry clean only. Steam iron only.',
     packageContains: '1 Velvet Sherwani, 1 Inner Silk Kurta, 1 Raw Silk Pajama, Matching Shawl.',
     images: [
-      '/src/assets/images/hero_fashion_luxury_1793091301490.jpg',
-      '/src/assets/images/promo_festive_banner_1793091303468.jpg'
+      heroImage,
+      promoBannerImage
     ],
     colors: ['Jewel Emerald', 'Midnight Black', 'Ruby Maroon'],
     sizes: ['S', 'M', 'L', 'XL'],
@@ -122,6 +129,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     tags: ['Sherwani', 'Groom Wear', 'Velvet', 'Luxury Menswear'],
     rating: 4.8,
     reviewsCount: 9,
+    reviews: [],
     createdAt: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
     updatedAt: new Date().toISOString()
   },
@@ -140,8 +148,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     careInstructions: 'Shrink fabric before stitching. Hand wash separate in mild detergent.',
     packageContains: 'Unstitched Shirt Fabric, Trouser Fabric, Dupatta, 3x Embroidered Border Patches.',
     images: [
-      '/src/assets/images/category_unstitched_luxury_1793091303504.jpg',
-      '/src/assets/images/category_women_collection_1793091302648.jpg'
+      unstitchedImage,
+      womenCollectionImage
     ],
     colors: ['Teal & Gold', 'Crimson & Rust', 'Ivory & Ochre'],
     sizes: ['Unstitched'],
@@ -153,6 +161,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     tags: ['Unstitched', 'Jacquard', 'Pakistani Lawn', 'Festive Lawn'],
     rating: 4.9,
     reviewsCount: 31,
+    reviews: [],
     createdAt: new Date(Date.now() - 3600000 * 24 * 4).toISOString(),
     updatedAt: new Date().toISOString()
   },
@@ -165,13 +174,13 @@ export const INITIAL_PRODUCTS: Product[] = [
     brand: 'Aman Daily',
     price: 4950,
     salePrice: 3999,
-    stock: 45,
+    stock: 40,
     description: 'Refined minimalism for everyday elegance and Jummah prayers. Tailored from 120/2 double-ply long-staple Egyptian cotton with mother-of-pearl buttons and crisp banded collar.',
     fabricDetails: '100% Giza Egyptian Long Staple Cotton. Silky smooth finish.',
     careInstructions: 'Machine wash gentle. Warm iron with light starch.',
     packageContains: '1 Kurta.',
     images: [
-      '/src/assets/images/category_men_collection_1793091301301.jpg'
+      menCollectionImage
     ],
     colors: ['Pure Ivory', 'Soft Slate', 'Biscuit Cream'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -183,6 +192,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     tags: ['Kurta', 'Cotton', 'Summer Collection', 'Men Casual'],
     rating: 4.7,
     reviewsCount: 14,
+    reviews: [],
     createdAt: new Date(Date.now() - 3600000 * 24 * 3).toISOString(),
     updatedAt: new Date().toISOString()
   },
@@ -195,14 +205,14 @@ export const INITIAL_PRODUCTS: Product[] = [
     brand: 'Aman Couture',
     price: 28000,
     salePrice: 24500,
-    stock: 6,
+    stock: 3,
     description: 'Royal midnight blue and plum hand-worked velvet kalidar gown. Embellished with resham, tilla, mukesh work, and paired with a heavy organza dupatta finished with gold kiran edging.',
     fabricDetails: 'Pure Korean Velvet 9000 with rich zari hand-embroidery.',
     careInstructions: 'Dry clean only. Do not wash or steam at home.',
     packageContains: '1 Stitched Kalidar Anarkali, 1 Silk Trouser, 1 Heavy Embroidered Dupatta.',
     images: [
-      '/src/assets/images/promo_festive_banner_1793091303468.jpg',
-      '/src/assets/images/category_women_collection_1793091302648.jpg'
+      promoBannerImage,
+      womenCollectionImage
     ],
     colors: ['Midnight Blue', 'Royal Plum', 'Deep Crimson'],
     sizes: ['S', 'M', 'L', 'XL'],
@@ -214,6 +224,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     tags: ['Velvet', 'Kalidar', 'Bridal Festive', 'Formal'],
     rating: 5.0,
     reviewsCount: 11,
+    reviews: [],
     createdAt: new Date(Date.now() - 3600000 * 24 * 2).toISOString(),
     updatedAt: new Date().toISOString()
   },
@@ -226,13 +237,13 @@ export const INITIAL_PRODUCTS: Product[] = [
     brand: 'Aman Junior',
     price: 3600,
     salePrice: 2999,
-    stock: 20,
+    stock: 18,
     description: 'Charming festive kurta pajama set for boys. Breathable soft cotton blend with subtle collar threadwork and elastic waistband trousers for full comfort throughout celebrations.',
     fabricDetails: '100% Cotton Linen blend. Skin friendly.',
     careInstructions: 'Machine wash cold. Gentle tumble dry.',
     packageContains: '1 Kurta, 1 Cotton Pajama.',
     images: [
-      '/src/assets/images/category_men_collection_1793091301301.jpg'
+      menCollectionImage
     ],
     colors: ['Sky Blue', 'Ivory Cream', 'Sage Green'],
     sizes: ['4-5 Y', '6-7 Y', '8-9 Y', '10-11 Y', '12-13 Y'],
@@ -244,7 +255,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     tags: ['Kids', 'Boys Kurta', 'Festive Kids', 'Junior'],
     rating: 4.9,
     reviewsCount: 8,
-    createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
+    reviews: [],
+    createdAt: new Date(Date.now() - 3600000 * 24 * 1).toISOString(),
     updatedAt: new Date().toISOString()
   },
   {
@@ -262,7 +274,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     careInstructions: 'Machine wash warm. Medium iron.',
     packageContains: '1 Tailored Formal Shirt.',
     images: [
-      '/src/assets/images/category_men_collection_1793091301301.jpg'
+      menCollectionImage
     ],
     colors: ['Crisp White', 'Sky Blue', 'Charcoal Stripe'],
     sizes: ['S', 'M', 'L', 'XL'],
@@ -274,6 +286,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     tags: ['Shirts', 'Menswear', 'Formal', 'Western'],
     rating: 4.6,
     reviewsCount: 16,
+    reviews: [],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   }
@@ -285,7 +298,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     name: "Men's Clothing",
     slug: 'mens-clothing',
     description: 'Designer Kurtas, Shalwar Kameez, Waistcoats & Formalwear',
-    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    image: menCollectionImage,
     itemCount: 12,
     displayOrder: 1,
     isVisible: true
@@ -295,7 +308,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     name: "Women's Clothing",
     slug: 'womens-clothing',
     description: 'Luxury Pret, Festive 3-Piece, Chiffon & Organza Ensembles',
-    image: '/src/assets/images/category_women_collection_1793091302648.jpg',
+    image: womenCollectionImage,
     itemCount: 18,
     displayOrder: 2,
     isVisible: true
@@ -305,7 +318,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     name: 'Unstitched Fabrics',
     slug: 'unstitched-fabrics',
     description: 'Pure Jacquard, Embroidered Lawn & Raw Silk Cut Pieces',
-    image: '/src/assets/images/category_unstitched_luxury_1793091303504.jpg',
+    image: unstitchedImage,
     itemCount: 24,
     displayOrder: 3,
     isVisible: true
@@ -315,7 +328,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     name: 'Kurtas',
     slug: 'kurtas',
     description: 'Casual & Semi-Formal Pure Cotton Band Collar Kurtas',
-    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    image: menCollectionImage,
     itemCount: 15,
     displayOrder: 4,
     isVisible: true
@@ -325,7 +338,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     name: 'Shirts',
     slug: 'shirts',
     description: 'Formal Executive & Smart Casual Button-down Shirts',
-    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    image: menCollectionImage,
     itemCount: 9,
     displayOrder: 5,
     isVisible: true
@@ -335,7 +348,7 @@ export const INITIAL_CATEGORIES: Category[] = [
     name: "Kids' Clothing",
     slug: 'kids-clothing',
     description: 'Festive Kurta Pajamas & Waistcoats for Young Gentlemen',
-    image: '/src/assets/images/category_men_collection_1793091301301.jpg',
+    image: menCollectionImage,
     itemCount: 8,
     displayOrder: 6,
     isVisible: true
@@ -374,7 +387,7 @@ export const INITIAL_SETTINGS: StoreSettings = {
   heroBanner: {
     title: 'Masterpieces of Pakistani Elegance',
     subtitle: 'Winter & Wedding Couture 2026. Bespoke hand-embroidery, pure organza, raw silk & fine Egyptian cotton.',
-    image: '/src/assets/images/hero_fashion_luxury_1793091301490.jpg',
+    image: heroImage,
     ctaText: 'Explore Collection',
     ctaLink: '/shop'
   },
@@ -386,7 +399,7 @@ export const INITIAL_SETTINGS: StoreSettings = {
       tagline: 'LIMITED EDITION HERITAGE COLLECTION',
       buttonText: 'Shop Festive Edit',
       link: '/shop',
-      image: '/src/assets/images/promo_festive_banner_1793091303468.jpg',
+      image: promoBannerImage,
       isActive: true
     }
   ],

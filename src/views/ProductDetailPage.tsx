@@ -21,6 +21,7 @@ import { SizeChartModal } from '../components/SizeChartModal';
 import { ProductCard } from '../components/ProductCard';
 import * as api from '../api';
 import type { Product, ProductReview } from '../types';
+import { resolveProductImage, heroImage } from '../assets/images';
 
 export const ProductDetailPage: React.FC = () => {
   const { 
@@ -176,9 +177,14 @@ export const ProductDetailPage: React.FC = () => {
                   }`}
                 >
                   <img 
-                    src={img} 
+                    src={resolveProductImage(img)} 
                     alt={`View ${idx + 1}`} 
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      if (e.currentTarget.src !== heroImage) {
+                        e.currentTarget.src = heroImage;
+                      }
+                    }}
                     className="w-full h-full object-cover object-top"
                   />
                 </button>
@@ -189,12 +195,12 @@ export const ProductDetailPage: React.FC = () => {
           {/* Large Main Image */}
           <div className="relative flex-1 aspect-3/4 bg-stone-100 rounded-lg overflow-hidden border border-stone-200/80 group">
             <img
-              src={activeImage || product.images[0]}
+              src={resolveProductImage(activeImage || product.images?.[0])}
               alt={product.name}
               referrerPolicy="no-referrer"
               onError={(e) => {
-                if (!e.currentTarget.src.includes('category_men_collection')) {
-                  e.currentTarget.src = '/src/assets/images/category_men_collection_1793091301301.jpg';
+                if (e.currentTarget.src !== heroImage) {
+                  e.currentTarget.src = heroImage;
                 }
               }}
               className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"

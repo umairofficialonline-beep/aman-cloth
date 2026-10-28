@@ -2,6 +2,7 @@ import React from 'react';
 import { Heart, ShoppingBag, Star } from 'lucide-react';
 import type { Product } from '../types';
 import { useStore } from '../context/StoreContext';
+import { resolveProductImage, heroImage } from '../assets/images';
 
 interface ProductCardProps {
   product: Product;
@@ -29,6 +30,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     toggleWishlist(product.id);
   };
 
+  const resolvedSrc = resolveProductImage(product.images?.[0]);
+
   return (
     <div 
       onClick={() => navigateToProduct(product.id)}
@@ -36,14 +39,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     >
       {/* Image Container */}
       <div className="relative aspect-3/4 w-full bg-stone-100 overflow-hidden">
-        {product.images && product.images.length > 0 ? (
+        {resolvedSrc ? (
           <img
-            src={product.images[0]}
+            src={resolvedSrc}
             alt={product.name}
+            loading="lazy"
             referrerPolicy="no-referrer"
             onError={(e) => {
-              if (!e.currentTarget.src.includes('category_men_collection')) {
-                e.currentTarget.src = '/src/assets/images/category_men_collection_1793091301301.jpg';
+              if (e.currentTarget.src !== heroImage) {
+                e.currentTarget.src = heroImage;
               }
             }}
             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"

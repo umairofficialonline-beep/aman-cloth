@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import * as api from '../api';
+import { resolveProductImage, heroImage } from '../assets/images';
 import type { 
   Product, Category, Order, Customer, Coupon, StoreSettings, AdminMetrics, 
   OrderStatus, StockLog, SalesAnalyticsReport 
@@ -1023,9 +1024,14 @@ export const AdminDashboard: React.FC = () => {
                           <td className="py-3 px-3">
                             <div className="flex items-center gap-3">
                               <img
-                                src={p.images[0] || '/src/assets/images/category_men_collection_1793091301301.jpg'}
+                                src={resolveProductImage(p.images?.[0])}
                                 alt={p.name}
                                 referrerPolicy="no-referrer"
+                                onError={(e) => {
+                                  if (e.currentTarget.src !== heroImage) {
+                                    e.currentTarget.src = heroImage;
+                                  }
+                                }}
                                 className="w-10 h-12 object-cover object-top rounded border border-stone-200"
                               />
                               <div>
@@ -1450,9 +1456,14 @@ export const AdminDashboard: React.FC = () => {
                     <div key={cat.id} className="bg-white border border-stone-200 rounded-lg p-4 shadow-xs space-y-3">
                       <div className="h-32 rounded bg-stone-100 overflow-hidden relative">
                         <img
-                          src={cat.image || '/src/assets/images/category_men_collection_1793091301301.jpg'}
+                          src={resolveProductImage(cat.image)}
                           alt={cat.name}
                           referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            if (e.currentTarget.src !== heroImage) {
+                              e.currentTarget.src = heroImage;
+                            }
+                          }}
                           className="w-full h-full object-cover"
                         />
                         <span className="absolute bottom-2 right-2 px-2 py-0.5 bg-black/70 text-white rounded text-[10px] font-mono">
@@ -2042,7 +2053,17 @@ export const AdminDashboard: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-3">
                   {productForm.images.map((img, i) => (
                     <div key={i} className="relative w-16 h-20 rounded border border-stone-200 overflow-hidden group">
-                      <img src={img} alt="" referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                      <img 
+                        src={resolveProductImage(img)} 
+                        alt="" 
+                        referrerPolicy="no-referrer" 
+                        onError={(e) => {
+                          if (e.currentTarget.src !== heroImage) {
+                            e.currentTarget.src = heroImage;
+                          }
+                        }}
+                        className="w-full h-full object-cover" 
+                      />
                       <button
                         type="button"
                         onClick={() => setProductForm(p => ({ ...p, images: p.images.filter((_, idx) => idx !== i) }))}

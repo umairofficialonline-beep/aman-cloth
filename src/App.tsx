@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { StoreProvider, useStore } from './context/StoreContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -17,6 +17,55 @@ import { CustomerAccountPage } from './views/CustomerAccountPage';
 import { AboutPage, ContactPage, FaqPage, PolicyPage } from './views/ContentPages';
 import { AdminLoginPage } from './views/AdminLoginPage';
 import { AdminDashboard } from './views/AdminDashboard';
+
+interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error?: Error;
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  public state: ErrorBoundaryState = {
+    hasError: false
+  };
+
+  public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
+  }
+
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('Uncaught error in Aman Cloth House:', error, errorInfo);
+  }
+
+  public render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-stone-900 text-stone-100 p-6">
+          <div className="max-w-md w-full bg-stone-950 p-8 rounded-xl border border-amber-500/30 text-center space-y-4">
+            <h1 className="text-xl font-serif text-amber-200">Aman Cloth House</h1>
+            <p className="text-sm text-stone-400">
+              A temporary issue occurred while rendering this page.
+            </p>
+            <button
+              onClick={() => {
+                this.setState({ hasError: false });
+                window.location.reload();
+              }}
+              className="px-6 py-2.5 bg-amber-400 text-stone-950 font-semibold text-xs uppercase tracking-wider rounded cursor-pointer"
+            >
+              Reload Store
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 const MainRouter: React.FC = () => {
   const { currentPage } = useStore();
@@ -64,8 +113,10 @@ const MainRouter: React.FC = () => {
 
 export default function App() {
   return (
-    <StoreProvider>
-      <MainRouter />
-    </StoreProvider>
+    <ErrorBoundary>
+      <StoreProvider>
+        <MainRouter />
+      </StoreProvider>
+    </ErrorBoundary>
   );
 }

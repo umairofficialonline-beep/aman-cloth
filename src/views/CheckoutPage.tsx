@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import * as api from '../api';
+import { resolveProductImage, heroImage } from '../assets/images';
 
 const PAKISTANI_CITIES = [
   'Lahore',
@@ -442,9 +443,14 @@ export const CheckoutPage: React.FC = () => {
                 <div key={`${item.productId}-${item.selectedColor}-${item.selectedSize}`} className="py-3 flex gap-3 items-center">
                   <div className="w-14 h-16 bg-stone-100 rounded overflow-hidden shrink-0 border border-stone-200">
                     <img
-                      src={item.product.images[0]}
+                      src={resolveProductImage(item.product.images?.[0])}
                       alt={item.product.name}
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        if (e.currentTarget.src !== heroImage) {
+                          e.currentTarget.src = heroImage;
+                        }
+                      }}
                       className="w-full h-full object-cover object-top"
                     />
                   </div>

@@ -11,6 +11,7 @@ import {
   Calendar 
 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { resolveProductImage, heroImage } from '../assets/images';
 
 export const OrderConfirmationPage: React.FC = () => {
   const { lastPlacedOrder, settings, setCurrentPage } = useStore();
@@ -148,14 +149,17 @@ export const OrderConfirmationPage: React.FC = () => {
                   <tr key={idx}>
                     <td className="py-3 px-3 font-medium">
                       <div className="flex items-center gap-3">
-                        {item.image && (
-                          <img 
-                            src={item.image} 
-                            alt={item.name} 
-                            referrerPolicy="no-referrer"
-                            className="w-10 h-12 object-cover object-top rounded border border-stone-200" 
-                          />
-                        )}
+                        <img 
+                          src={resolveProductImage(item.image)} 
+                          alt={item.name} 
+                          referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            if (e.currentTarget.src !== heroImage) {
+                              e.currentTarget.src = heroImage;
+                            }
+                          }}
+                          className="w-10 h-12 object-cover object-top rounded border border-stone-200" 
+                        />
                         <span>{item.name}</span>
                       </div>
                     </td>

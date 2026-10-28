@@ -11,6 +11,7 @@ import {
   Truck 
 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { resolveProductImage, heroImage } from '../assets/images';
 
 export const CartDrawer: React.FC = () => {
   const { 
@@ -137,9 +138,14 @@ export const CartDrawer: React.FC = () => {
                     className="w-20 h-24 bg-stone-100 rounded overflow-hidden shrink-0 cursor-pointer border border-stone-200/60"
                   >
                     <img 
-                      src={item.product.images[0]} 
+                      src={resolveProductImage(item.product.images?.[0])} 
                       alt={item.product.name}
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        if (e.currentTarget.src !== heroImage) {
+                          e.currentTarget.src = heroImage;
+                        }
+                      }}
                       className="w-full h-full object-cover object-top hover:scale-105 transition-transform"
                     />
                   </div>

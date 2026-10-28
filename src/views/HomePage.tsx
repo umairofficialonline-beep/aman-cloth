@@ -13,6 +13,14 @@ import {
 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { ProductCard } from '../components/ProductCard';
+import { 
+  heroImage, 
+  menCollectionImage, 
+  womenCollectionImage, 
+  unstitchedImage, 
+  promoBannerImage,
+  resolveProductImage 
+} from '../assets/images';
 
 export const HomePage: React.FC = () => {
   const { 
@@ -58,7 +66,7 @@ export const HomePage: React.FC = () => {
         {/* Background Image with luxury overlay scrim */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/images/hero_fashion_luxury_1793091301490.jpg"
+            src={heroImage}
             alt="Aman Cloth House Festive Couture"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center filter brightness-90 contrast-105"
@@ -146,7 +154,7 @@ export const HomePage: React.FC = () => {
             className="group relative h-96 rounded-lg overflow-hidden cursor-pointer shadow-md"
           >
             <img
-              src="/src/assets/images/category_men_collection_1793091301301.jpg"
+              src={menCollectionImage}
               alt="Men's Traditional Clothing"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -172,7 +180,7 @@ export const HomePage: React.FC = () => {
             className="group relative h-96 rounded-lg overflow-hidden cursor-pointer shadow-md"
           >
             <img
-              src="/src/assets/images/category_women_collection_1793091302648.jpg"
+              src={womenCollectionImage}
               alt="Women's Luxury Pret"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -198,7 +206,7 @@ export const HomePage: React.FC = () => {
             className="group relative h-96 rounded-lg overflow-hidden cursor-pointer shadow-md"
           >
             <img
-              src="/src/assets/images/category_unstitched_luxury_1793091303504.jpg"
+              src={unstitchedImage}
               alt="Unstitched Luxury Fabrics"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -255,7 +263,7 @@ export const HomePage: React.FC = () => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-xl overflow-hidden bg-stone-900 shadow-xl">
             <img
-              src={promoBanner.image || '/src/assets/images/promo_festive_banner_1793091303468.jpg'}
+              src={resolveProductImage(promoBanner.image) || promoBannerImage}
               alt={promoBanner.title}
               referrerPolicy="no-referrer"
               className="w-full h-80 sm:h-96 object-cover object-center filter brightness-75"
@@ -443,7 +451,7 @@ export const HomePage: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           <div className="aspect-square bg-stone-100 rounded-md overflow-hidden group relative">
             <img 
-              src="/src/assets/images/category_men_collection_1793091301301.jpg" 
+              src={menCollectionImage} 
               alt="Lookbook 1" 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -454,7 +462,7 @@ export const HomePage: React.FC = () => {
           </div>
           <div className="aspect-square bg-stone-100 rounded-md overflow-hidden group relative">
             <img 
-              src="/src/assets/images/category_women_collection_1793091302648.jpg" 
+              src={womenCollectionImage} 
               alt="Lookbook 2" 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -465,7 +473,7 @@ export const HomePage: React.FC = () => {
           </div>
           <div className="aspect-square bg-stone-100 rounded-md overflow-hidden group relative">
             <img 
-              src="/src/assets/images/category_unstitched_luxury_1793091303504.jpg" 
+              src={unstitchedImage} 
               alt="Lookbook 3" 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -476,7 +484,7 @@ export const HomePage: React.FC = () => {
           </div>
           <div className="aspect-square bg-stone-100 rounded-md overflow-hidden group relative">
             <img 
-              src="/src/assets/images/hero_fashion_luxury_1793091301490.jpg" 
+              src={heroImage} 
               alt="Lookbook 4" 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
